@@ -1,0 +1,32 @@
+name: Deploy CV
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to VPS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd ~/my-cv || mkdir -p ~/my-cv && cd ~/my-cv
+
+            if [ -d ".git" ]; then
+              git fetch origin
+              git reset --hard origin/main
+            else
+              git clone https://github.com/SoulsArchitecht/my-cv.git .
+            fi
+
+            docker stop my-cv 2>/dev/null || true
+            docker rm my-cv 2>/dev/null || true
+            docker build -t my-cv .
+            docker run -d --name my-cv -p 3001:80 my-cv
+
+            echo "my-cv deployed on port 3001"
