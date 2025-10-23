@@ -18,10 +18,9 @@ const Skills: React.FC<{ lang: 'en' | 'ru' }> = ({ lang }) => {
         <li>DB: PostgreSQL, MySQL, H2, Redis, MongoDB + Advanced SQL + Liquibase/Flyway Db Migrations </li>
         <li>Message Brokers: Kafka, RabbitMQ</li>
         <li>Frontend: ReactJS, JavaScript, TypeScript, HTML/CSS/SCSS, JSP, Thymeleaf</li>
-        <li>Containerzation and deploy: Docker, Kubernetes, CI/CD, CodeReview</li>
         <li>Methodologies: Agile, Waterfall</li>
         <li>Tests: JUnit, Mockito, SpringBootTest</li>
-        <li>Conteinerzation and deploy: Linux, Docker, Kubernetes, CI/CD</li>
+        <li>Conteinerzation and deploy: Linux, Docker, Kubernetes, CI/CD, CodeReview</li>
         <li>Documentation: JavaDoc, OpenAPI/Swagger</li>
       </ul>
     </section>
